@@ -1,8 +1,6 @@
-from rest_framework import response
+from rest_framework import response, status
 from rest_framework.decorators import api_view
 from rest_framework.exceptions import ValidationError
-
-from celery.result import AsyncResult
 
 from .tasks import file_generator
 from .models import *
@@ -27,4 +25,4 @@ def generate_file(request):
     # Celery task to generate file
     file_generator.delay(file_name, count)
     
-    return response.Response("Success")
+    return response.Response("Success", status=status.HTTP_200_OK)

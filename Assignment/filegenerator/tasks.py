@@ -1,4 +1,3 @@
-from itertools import count
 import os
 import csv
 
@@ -6,8 +5,6 @@ from celery import shared_task, current_task
 from celery.result import AsyncResult
 
 from essential_generators import DocumentGenerator
-
-from Assignment.celery import app
 
 from .models import * 
 
